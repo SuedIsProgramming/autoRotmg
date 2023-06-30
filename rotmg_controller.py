@@ -1,9 +1,7 @@
+import ctypes, os
 import time as t
 import pydirectinput as pdi
 import pyautogui as pauto
-import sys
-import ctypes, os
-
 
 def is_admin():
     """Returns true if the IDE is in administrator mode."""
@@ -14,7 +12,7 @@ def is_admin():
 
     return is_adm
 
-def activate_auto_nexus():
+def run_autonexus():
     """autoNexus based on detecting whether the pixels to the left of "HP" are Red"""
 
     if not is_admin(): # Checks if the IDE is in administrator mode. If not, exits.
@@ -32,4 +30,4 @@ def activate_auto_nexus():
                 start_time = t.time()
                 first = False
 
-activate_auto_nexus()
+run_autonexus()
