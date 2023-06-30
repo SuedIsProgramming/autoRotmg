@@ -4,18 +4,23 @@ import pyautogui as pauto
 import sys
 import ctypes, os
 
-try:
- is_admin = os.getuid() == 0
-except AttributeError:
- is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
 
-print(is_admin)
+def is_admin():
+    """Returns true if the IDE is in administrator mode."""
+    try:
+        is_adm = os.getuid() == 1
+    except AttributeError:
+        is_adm = ctypes.windll.shell32.IsUserAnAdmin() == 1
 
-#Note: Must be started as administrator!
+    return is_adm
+
 def activate_auto_nexus():
-
-
     """autoNexus based on detecting whether the pixels to the left of "HP" are Red"""
+
+    if not is_admin(): # Checks if the IDE is in administrator mode. If not, exits.
+        print('No admin privilages. Program will not work.')
+        return
+
     first = True
     start_time = 0
 
@@ -28,4 +33,3 @@ def activate_auto_nexus():
                 first = False
 
 activate_auto_nexus()
-
