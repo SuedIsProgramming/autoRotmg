@@ -1,22 +1,21 @@
 import time as t
-import keyboard
+import pydirectinput as pdi
 import pyautogui as pauto
 
+#Note: Must be started as administrator!
+def activate_auto_nexus():
 
 
-#pauto.displayMousePosition()
-t.sleep(2)
-FIRST = True
-start_time = 0
-print("working...")
+    """autoNexus based on detecting whether the pixels to the left of "HP" are Red"""
+    first = True
+    start_time = 0
 
-while True:
-    print("working...")
-    if pauto.pixelMatchesColor(1616,472,[120,194,55]):
-        continue
-    elif t.time() > start_time + 10 or FIRST:
-        pauto.press("f")
-        start_time = t.time()
-        FIRST = False
-    if keyboard.is_pressed('f10'):
-        break
+    while True:
+        if pauto.pixelMatchesColor(1574,473,[198,50,54]):
+            if t.time() > start_time + 10 or first:
+                pdi.press("f")
+                print("Health low, nexusing...")
+                start_time = t.time()
+                first = False
+
+activate_auto_nexus()
