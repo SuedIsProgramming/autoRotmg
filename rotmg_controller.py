@@ -1,6 +1,15 @@
 import time as t
 import pydirectinput as pdi
 import pyautogui as pauto
+import sys
+import ctypes, os
+
+try:
+ is_admin = os.getuid() == 0
+except AttributeError:
+ is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
+
+print(is_admin)
 
 #Note: Must be started as administrator!
 def activate_auto_nexus():
@@ -19,3 +28,4 @@ def activate_auto_nexus():
                 first = False
 
 activate_auto_nexus()
+
