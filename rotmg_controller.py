@@ -1,7 +1,10 @@
 import ctypes, os
-import time as t
 import pydirectinput as pdi
-import pyautogui as pauto
+from PIL import ImageGrab
+from datetime import datetime as dt
+import time as t
+
+#pauto.pixelMatchesColor(1574,473,[198,50,54])
 
 def is_admin():
     """Returns true if the IDE is in administrator mode."""
@@ -23,10 +26,10 @@ def run_autonexus():
     start_time = 0
 
     while True:
-        if pauto.pixelMatchesColor(1574,473,[198,50,54]):
+        if  (198,50,54) == ImageGrab.grab().getpixel((1574, 473)): # New implementation without the 10k limit
             if t.time() > start_time + 10 or first:
                 pdi.press("f")
-                print("Health low, nexusing...")
+                print("Health low, attempted to nexus at ", dt.now())
                 start_time = t.time()
                 first = False
 

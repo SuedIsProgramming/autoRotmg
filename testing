@@ -1,0 +1,7 @@
+from PIL import ImageGrab
+
+while True:
+    if  (198,50,54) == ImageGrab.grab().getpixel((1574, 473)):
+        print('youre gonna die')
+    else:
+        print('working')
