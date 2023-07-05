@@ -1,6 +1,8 @@
-import time as t
+import ctypes, os
 import pydirectinput as pdi
-import pyautogui as pauto
+from PIL import ImageGrab
+from datetime import datetime as dt
+import time as t
 
 #Note: Must be started as administrator!
 def activate_auto_nexus():
@@ -13,7 +15,7 @@ def activate_auto_nexus():
         if pauto.pixelMatchesColor(1574,473,[198,50,54]):
             if t.time() > start_time + 10 or first: # 10 second cooldown in between nexus key press.
                 pdi.press("f")
-                print("Health low, nexusing...")
+                print("Health low, attempted to nexus at ", dt.now())
                 start_time = t.time()
                 first = False
 
