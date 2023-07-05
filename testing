@@ -1,7 +1,3 @@
-from PIL import ImageGrab
+from datetime import datetime as dt
 
-while True:
-    if  (198,50,54) == ImageGrab.grab().getpixel((1574, 473)):
-        print('youre gonna die')
-    else:
-        print('working')
+print(dt.now())
