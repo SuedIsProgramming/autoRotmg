@@ -1,10 +1,8 @@
+from datetime import datetime as dt
+import time as t
 import ctypes, os
 import pydirectinput as pdi
 from PIL import ImageGrab
-from datetime import datetime as dt
-import time as t
-
-#pauto.pixelMatchesColor(1574,473,[198,50,54])
 
 def is_admin():
     """Returns true if the IDE is in administrator mode."""
